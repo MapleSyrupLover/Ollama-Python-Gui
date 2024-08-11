@@ -1,19 +1,26 @@
 import sys
-from PyQt5.QtCore import QThread, pyqtSignal # type: ignore
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QTextEdit, QPushButton, QLabel, QScrollArea # type: ignore
-from PyQt5.QtGui import QFont, QColor # type: ignore
+from PyQt5.QtCore import QThread, pyqtSignal  # type: ignore
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QTextEdit, QPushButton, QLabel, QScrollArea, QComboBox  # type: ignore
+from PyQt5.QtGui import QFont, QColor  # type: ignore
 import ollama
+
+
+# MAKE SURE OLLAMA.EXE IS ALREADY RUNNING
+# THIS IS A VERY BASIC GUI AND I WILL BE UPDATING IT, IT MAY LOOK BAD NOW BUT IT I SWEAR IT WILL GET BETTER
+# MADE BY MAPLESYRUPLOVER
+
 
 class ResponseThread(QThread):
     response_signal = pyqtSignal(str)
 
-    def __init__(self, message):
+    def __init__(self, message, model):
         super().__init__()
         self.message = message
+        self.model = model
 
     def run(self):
         response = ollama.chat(
-            model='llama2-uncensored',
+            model=self.model,
             messages=[
                 {'role': 'user', 'content': self.message}
             ]
@@ -48,6 +55,15 @@ class Application(QWidget):
         self.input_field.setMinimumHeight(30)  # Set minimum height
         self.input_field.setMaximumHeight(30)  # Set maximum height
         input_layout.addWidget(self.input_field)
+
+        self.model_combobox = QComboBox()
+        self.model_combobox.addItem("llama2-uncensored")
+        self.model_combobox.addItem("llama2")
+        self.model_combobox.addItem("llama3")
+        self.model_combobox.addItem("llama3.1")
+        self.model_combobox.addItem("dolphin-mixtral")
+        self.model_combobox.addItem("TO ADD MORE LLMS EDIT SOURCE CODE")  # To add more LLM's of your own just add another combo box
+        input_layout.addWidget(self.model_combobox)
 
         self.send_button = QPushButton("Send")
         self.send_button.clicked.connect(self.send_message)
@@ -91,10 +107,11 @@ class Application(QWidget):
 
     def send_message(self):
         message = self.input_field.toPlainText()
+        model = self.model_combobox.currentText()
         self.add_message("You", message)
         self.input_field.clear()
 
-        thread = ResponseThread(message)
+        thread = ResponseThread(message, model)
         self.threads.append(thread)  # Store the ResponseThread object
         thread.response_signal.connect(self.add_response)
         thread.start()
