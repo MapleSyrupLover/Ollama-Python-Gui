@@ -1,9 +1,6 @@
-MAKE SURE THAT OLLAMA.EXE IS RUNNING ALREADY
-The GUI uses llama2-uncensored by default! Please switch the model to the one you wish to use!
+WARNING: MAKE SURE THAT OLLAMA.EXE IS RUNNING ALREADY
 
-◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱◰◳◲◱
-
-Screenshot Showcase
+Screenshot Showcase:
 
 ![Screenshot 2024-08-11 182321](https://github.com/user-attachments/assets/8007695d-3726-4ac9-ad6a-b1b1bcbe697d)
 
