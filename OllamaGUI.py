@@ -35,7 +35,7 @@ class Application(QWidget):
         self.threads = []  # List to store ResponseThread objects
 
     def initUI(self):
-        self.setWindowTitle("MAPLESYURPISDEFINATELYNOTAFURRY")
+        self.setWindowTitle("I REALLY LOVE MAPLE SYRUP!")
         self.setGeometry(200, 200, 750, 575)
 
         layout = QVBoxLayout()
