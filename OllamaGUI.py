@@ -66,6 +66,7 @@ class Application(QWidget):
         input_layout.addWidget(self.model_combobox)
 
         self.send_button = QPushButton("Send")
+        # I AM A MATURE PERSON
         self.send_button.clicked.connect(self.send_message)
         self.send_button.setMinimumWidth(100)  # Set minimum width
         self.send_button.setFixedHeight(35)  # Set fixed height
