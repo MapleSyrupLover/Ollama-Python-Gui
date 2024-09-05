@@ -1,5 +1,7 @@
 WARNING: MAKE SURE THAT OLLAMA.EXE IS RUNNING ALREADY
 
+This stupid dumb GUI will be replaced with a better one soon!
+
 Screenshot Showcase:
 
 ![Screenshot 2024-08-11 182321](https://github.com/user-attachments/assets/8007695d-3726-4ac9-ad6a-b1b1bcbe697d)
